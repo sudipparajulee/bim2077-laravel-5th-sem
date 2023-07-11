@@ -11,15 +11,22 @@
     <table id="mytable" class="display">
         <thead>
             <tr>
+                <th>Priority</th>
                 <th>Category Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            @foreach($categories as $category)
             <tr>
-                <td>Category name</td>
-                <td>Edit Delete</td>
+                <td>{{$category->priority}}</td>
+                <td>{{$category->name}}</td>
+                <td>
+                    <a href="{{route('category.edit',$category->id)}}" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Edit</a>
+                    <a href="" class="bg-red-600 text-white px-4 py-2 rounded-lg">Delete</a>
+                </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
         <script>
