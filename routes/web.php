@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,16 @@ Route::post('/category/store',[CategoryController::class,'store'])->name('catego
 Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
 Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
 Route::get('/category/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
+
+//Notice Routes
+Route::get('/notice',[NoticeController::class, 'index'])->name('notice.index');
+Route::get('/notice/create',[NoticeController::class, 'create'])->name('notice.create');
+Route::post('/notice/store',[NoticeController::class, 'store'])->name('notice.store');
+Route::get('/notice/{id}/edit',[NoticeController::class, 'edit'])->name('notice.edit');
+Route::post('/notice/{id}/update',[NoticeController::class, 'update'])->name('notice.update');
+Route::get('/notice/{id}/delete',[NoticeController::class, 'delete'])->name('notice.delete');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
