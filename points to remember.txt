@@ -1,0 +1,20 @@
+//to make Notice model
+php artisan make:model Notice
+
+//to make migration to create notices table
+php artisan make:migration create_notices_table
+
+//to make Notice model and migration at once
+php artisan make:model Notice -m
+
+
+//Process for laravel CRUD Operation
+1. Create Model with Migration
+2. Add fields in migration file and save.
+3. php artisan migrate
+4. Add fillable fields in model.
+5. php artisan make:controller YourController
+6. create all function needed - index, create, store, edit, update, delete
+7. create Routes at web.php for all six functions.
+8. Now create blade and return view in functions.
+9. Work on blade and controller accordingly.
