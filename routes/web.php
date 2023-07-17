@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +44,15 @@ Route::post('/notice/store',[NoticeController::class, 'store'])->name('notice.st
 Route::get('/notice/{id}/edit',[NoticeController::class, 'edit'])->name('notice.edit');
 Route::post('/notice/{id}/update',[NoticeController::class, 'update'])->name('notice.update');
 Route::get('/notice/{id}/delete',[NoticeController::class, 'delete'])->name('notice.delete');
+
+
+//Gallery Routes
+Route::get('/gallery',[GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/create',[GalleryController::class, 'create'])->name('gallery.create');
+Route::post('/gallery/store',[GalleryController::class, 'store'])->name('gallery.store');
+Route::get('/gallery/{id}/edit',[GalleryController::class, 'edit'])->name('gallery.edit');
+Route::post('/gallery/{id}/update',[GalleryController::class, 'update'])->name('gallery.update');
+Route::get('/gallery/{id}/delete',[GalleryController::class, 'delete'])->name('gallery.delete');
 
 
 
