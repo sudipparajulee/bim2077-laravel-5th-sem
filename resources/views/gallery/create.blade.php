@@ -3,7 +3,7 @@
     <h1 class="text-3xl font-bold">Add Gallery</h1>
     <hr class="h-1 bg-red-600">
 
-    <form action="{{route('gallery.store')}}" method="POST" class="mt-5">
+    <form action="{{route('gallery.store')}}" method="POST" class="mt-5" enctype="multipart/form-data">
         @csrf
         <input type="text" name="priority" placeholder="Enter Priority" class="rounded w-full mt-4" value="{{old('priority')}}">
         @error('priority')
