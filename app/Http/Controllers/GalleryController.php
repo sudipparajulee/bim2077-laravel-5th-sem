@@ -43,18 +43,45 @@ class GalleryController extends Controller
 
     }
 
-    public function edit()
+    public function edit($id)
     {
-
+        $gallery = Gallery::find($id);
+        return view('gallery.edit',compact('gallery'));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $data = $request->validate([
+            'priority' => 'required|numeric',
+            'description' => 'required',
+            'photopath' => 'nullable|image'
+        ]);
 
+        $gallery = Gallery::find($id);
+        //store image
+        if($request->hasFile('photopath'))
+        {
+            $file = $request->file('photopath');
+            $filename = time().'_'.$file->getClientOriginalName();
+            //store file in /gallery
+            $file->storeAs('public/gallery',$filename);
+            //delete old file
+            Storage::delete('public/gallery/'.$gallery->photopath);
+            $data['photopath'] = $filename;
+        }
+        //store data
+        $gallery->update($data);
+
+        return redirect()->route('gallery.index');
     }
 
-    public function delete()
+    public function delete($id)
     {
-        
+        $gallery = Gallery::find($id);
+        //delete image
+        Storage::delete('public/gallery/'.$gallery->photopath);
+        //delete data
+        $gallery->delete();
+        return redirect()->route('gallery.index');
     }
 }
