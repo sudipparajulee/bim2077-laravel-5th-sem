@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -53,6 +54,15 @@ Route::post('/gallery/store',[GalleryController::class, 'store'])->name('gallery
 Route::get('/gallery/{id}/edit',[GalleryController::class, 'edit'])->name('gallery.edit');
 Route::post('/gallery/{id}/update',[GalleryController::class, 'update'])->name('gallery.update');
 Route::get('/gallery/{id}/delete',[GalleryController::class, 'delete'])->name('gallery.delete');
+
+
+//News Routes
+Route::get('/news',[NewsController::class, 'index'])->name('news.index');
+Route::get('/news/create',[NewsController::class, 'create'])->name('news.create');
+Route::post('/news/store',[NewsController::class, 'store'])->name('news.store');
+Route::get('/news/{id}/edit',[NewsController::class, 'edit'])->name('news.edit');
+Route::post('/news/{id}/update',[NewsController::class, 'update'])->name('news.update');
+Route::get('/news/{id}/delete',[NewsController::class, 'delete'])->name('news.delete');
 
 
 
