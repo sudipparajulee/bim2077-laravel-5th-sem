@@ -30,6 +30,10 @@
                     <a href="{{route('gallery.index')}}" class="px-4 py-2 hover:bg-gray-300 block border-b border-gray-300 border-l-blue-300 border-l-2 ml-2 mt-1">Gallery</a>
                     <a href="{{route('news.index')}}" class="px-4 py-2 hover:bg-gray-300 block border-b border-gray-300 border-l-blue-300 border-l-2 ml-2 mt-1">News</a>
                     <a href="" class="px-4 py-2 hover:bg-gray-300 block border-b border-gray-300 border-l-blue-300 border-l-2 ml-2 mt-1">Ads</a>
+                    <form action="{{route('logout')}}" method="POST"  class="px-4 py-2 hover:bg-gray-300 block border-b border-gray-300 border-l-blue-300 border-l-2 ml-2 mt-1">
+                        @csrf
+                        <button type="submit" class="w-full text-left">Logout</button>
+                    </form>
 
                 </div>
             </div>

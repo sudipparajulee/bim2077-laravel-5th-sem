@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
@@ -25,10 +26,14 @@ Route::get('/about',[PagesController::class,'about'])->name('about');
 
 Route::get('/contact',[PagesController::class,'contact'])->name('contact');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
+
+Route::middleware('auth')->group(function(){
+
+//Dahsboard Route
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 //Category Routes
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
@@ -64,7 +69,7 @@ Route::get('/news/{id}/edit',[NewsController::class, 'edit'])->name('news.edit')
 Route::post('/news/{id}/update',[NewsController::class, 'update'])->name('news.update');
 Route::get('/news/{id}/delete',[NewsController::class, 'delete'])->name('news.delete');
 
-
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
