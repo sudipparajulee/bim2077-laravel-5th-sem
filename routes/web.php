@@ -22,18 +22,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PagesController::class,'index'])->name('index');
 
+Route::get('/category',[PagesController::class,'category'])->name('category');
+
 Route::get('/about',[PagesController::class,'about'])->name('about');
 
 Route::get('/contact',[PagesController::class,'contact'])->name('contact');
 
 
 
-
-
-Route::middleware('auth')->group(function(){
-
 //Dahsboard Route
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth')->name('dashboard');
+
+Route::prefix('admin/')->middleware('auth')->group(function(){
+
+
 
 //Category Routes
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
